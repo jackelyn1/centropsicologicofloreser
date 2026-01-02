@@ -1,0 +1,45 @@
+.scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        /* Ocultar barra de scroll pero permitir funcionalidad */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .nav-link.active {
+            color: #702F8A;
+            border-bottom-color: #702F8A;
+        }
+        /* Ajuste para snap scrolling fluido */
+        .snap-mandatory {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+        #team-slider {
+            scroll-padding-left: 1rem;
+            scroll-padding-right: 1rem;
+        }
+        @media (min-width: 768px) {
+            #team-slider {
+                scroll-padding-left: 0;
+                scroll-padding-right: 0;
+            }
+        }
+        /* Sombra sutil para mejorar lectura de texto sobre imágenes */
+        .text-shadow-sm {
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
