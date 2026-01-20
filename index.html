@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro Psicológico FloreSer | Tu Bienestar es Primero</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="¿Buscas psicólogos en Ilo? En Centro Psicológico FloreSer ofrecemos terapia individual, de pareja y talleres para tu bienestar emocional. ¡Agenda tu cita hoy!">
-    <meta name="keywords" content="psicólogos en ilo, terapia de pareja ilo, terapia individual, talleres salud mental, centro psicológico ilo, ansiedad, depresión, bienestar emocional">
+    <meta name="description" content="¿Buscas psicólogos en Ilo y Arequipa? En Centro Psicológico FloreSer ofrecemos terapia individual, de pareja, talleres y neuropediatría. ¡Agenda tu cita hoy!">
+    <meta name="keywords" content="psicólogos en ilo, psicólogos arequipa, neuropediatra ilo, terapia de pareja, terapia individual, salud mental, ansiedad, depresión">
     <meta name="author" content="Centro Psicológico FloreSer">
-    <meta name="geo.region" content="PE-ARE" /> <meta name="geo.placename" content="Ilo" />
     
     <!-- Favicon -->
     <link rel="icon" href="img/icon.jpg">
@@ -19,9 +18,146 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        /* Ocultar barra de scroll pero permitir funcionalidad */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .nav-link.active {
+            color: #702F8A;
+            border-bottom-color: #702F8A;
+        }
+        /* Ajuste para snap scrolling fluido */
+        .snap-mandatory {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+        #team-slider {
+            scroll-padding-left: 1rem;
+            scroll-padding-right: 1rem;
+        }
+        @media (min-width: 768px) {
+            #team-slider {
+                scroll-padding-left: 0;
+                scroll-padding-right: 0;
+            }
+        }
+        /* Animación suave para cambio de sede */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    
+        /* --- NUEVAS ANIMACIONES DEL MODAL --- */
+        
+        /* Contenedor Base del Modal */
+        #serviceModal {
+            transition: visibility 0.3s;
+        }
+
+        /* Animación del Fondo (Backdrop) */
+        .modal-backdrop-enter {
+            animation: backdropFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .modal-backdrop-leave {
+            animation: backdropFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Animación de la Tarjeta del Modal */
+        .modal-card-enter {
+            animation: modalScaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .modal-card-leave {
+            animation: modalScaleOut 0.3s ease-in forwards;
+        }
+
+        /* Animación de los Elementos Internos (Staggering) */
+        .animate-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUpFade 0.5s ease-out forwards;
+        }
+        
+        /* Retrasos para el efecto cascada */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes backdropFadeIn {
+            from { opacity: 0; backdrop-filter: blur(0px); }
+            to { opacity: 1; backdrop-filter: blur(4px); }
+        }
+        @keyframes backdropFadeOut {
+            from { opacity: 1; backdrop-filter: blur(4px); }
+            to { opacity: 0; backdrop-filter: blur(0px); }
+        }
+        @keyframes modalScaleIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes modalScaleOut {
+            from { opacity: 1; transform: scale(1) translateY(0); }
+            to { opacity: 0; transform: scale(0.95) translateY(10px); }
+        }
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos lista modal */
+        .modal-content li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .modal-content li::before {
+            content: "\f00c"; /* FontAwesome Check */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #0d9488;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background-color: #ccfbf1;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Ajuste para Iframes de Drive */
+        .drive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.77%; /* Aspect Ratio 9:16 vertical */
+            height: 0;
+            background: #000;
+        }
+        .drive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+
     <script>
         tailwind.config = {
             theme: {
@@ -55,7 +191,6 @@
             }
         }
     </script>
-
 </head>
 <body class="font-sans text-neutral-800 antialiased bg-neutral-50 scroll-smooth" onload="initScrollSpy()">
 
@@ -104,19 +239,14 @@
     </nav>
 
     <!-- Hero Section (CAROUSEL) -->
-
     <section id="inicio" class="relative min-h-screen flex items-center pt-20 pb-20 md:pb-0 overflow-hidden bg-gray-100 section-spy">
-        
         <!-- Background Image Container -->
         <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-1000 ease-in-out transform scale-105" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
-        <div class="absolute inset-0 bg-white/10 bg-gradient-to-r from-white via-white/20 to-transparent"></div>
-
-
+            <div class="absolute inset-0 bg-white/10 bg-gradient-to-r from-white via-white/20 to-transparent"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
             <div class="max-w-3xl transition-opacity duration-700 ease-in-out pl-2" id="hero-content">
-                <!-- Se agregó drop-shadow-sm para resaltar texto sobre cualquier fondo -->
                 <span id="hero-subtitle" class="text-brand-700 font-bold tracking-wider uppercase text-sm mb-2 block drop-shadow-sm">Salud Mental & Bienestar</span>
                 
                 <h1 id="hero-title" class="text-4xl md:text-6xl font-serif font-extrabold text-gray-900 leading-tight mb-6 drop-shadow-sm">
@@ -125,7 +255,7 @@
                 </h1>
                 
                 <p id="hero-desc" class="text-lg md:text-xl text-gray-800 font-medium mb-8 leading-relaxed max-w-2xl drop-shadow-sm">
-                    Un espacio seguro diseñado para tu crecimiento personal y sanación emocional. Terapia profesional adaptada a tus necesidades.
+                    Un espacio seguro diseñado para tu crecimiento personal y sanación emocional. Terapia profesional adaptada a tus necesidades en Ilo y Arequipa.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
@@ -137,7 +267,6 @@
                     </a>
                 </div>
             </div>
-            
 
             <div class="mt-12 flex justify-center space-x-3 z-20 relative md:absolute md:bottom-10 md:left-1/2 md:transform md:-translate-x-1/2 md:mt-0">
                 <button onclick="setSlide(0)" class="w-3 h-3 rounded-full bg-brand-600 transition-all duration-300 hover:scale-125 cursor-pointer shadow-sm" id="dot-0"></button>
@@ -169,8 +298,8 @@
                     <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                         <i class="fas fa-couch"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Atención Presencial</h3>
-                    <p class="text-gray-500">Consultorios privados y confortables diseñados para tu tranquilidad y seguridad.</p>
+                    <h3 class="text-xl font-bold mb-2">Dos Sedes Presenciales</h3>
+                    <p class="text-gray-500">Consultorios privados y confortables en Ilo y Arequipa diseñados para tu tranquilidad.</p>
                 </div>
             </div>
         </div>
@@ -222,86 +351,98 @@
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- Service SPECIAL -->
+            <!-- Service SPECIAL: Psicoeducativo -->
             <div class="bg-brand-50 p-8 rounded-2xl shadow-lg border-2 border-brand-200 hover:shadow-2xl transition duration-300 group flex flex-col items-start relative overflow-hidden">
                 <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 group-hover:text-white transition">
                     <i class="fas fa-shapes text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Programa Psicoeducativo Anual</h3>
                 <p class="text-gray-600 mb-4 flex-grow font-medium">Desarrollo integral de habilidades para niños neurodiversos (TEA, TDAH).</p>
-                <button onclick="openModal('Programa Psicoeducativo Anual', 'Un programa especializado y continuo para niños con neurodivergencia (Autismo, TDAH, entre otros). Nos enfocamos en el desarrollo de habilidades sociales, autonomía, funciones ejecutivas y adaptación escolar en un entorno terapéutico estructurado.', 'fas fa-shapes')" class="text-brand-700 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('psicoeducativo')" class="text-brand-700 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
 
-            <!-- Service 1 -->
+            <!-- Service 1: Individual -->
             <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
                 <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
                     <i class="fas fa-user text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Terapia Individual</h3>
                 <p class="text-gray-500 mb-4 flex-grow">Espacio personal para tratar ansiedad, depresión, autoestima y procesos de duelo.</p>
-                <button onclick="openModal('Terapia Individual', 'Un proceso confidencial uno a uno diseñado para explorar tus pensamientos y emociones. Trabajamos temas como ansiedad, depresión, manejo del estrés y crecimiento personal.', 'fas fa-user')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('individual')" class="text-brand-600 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
 
-            <!-- Service 2 -->
+            <!-- Service 2: Pareja -->
             <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
                 <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-rose-600 group-hover:text-white transition">
                     <i class="fas fa-heart text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Terapia de Pareja</h3>
                 <p class="text-gray-500 mb-4 flex-grow">Mejorar la comunicación, resolver conflictos y fortalecer el vínculo afectivo.</p>
-                <button onclick="openModal('Terapia de Pareja', 'Sesiones conjuntas para identificar patrones de comunicación destructivos y construir una relación más sólida. Ideal para crisis, distanciamiento o problemas de confianza.', 'fas fa-heart')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('pareja')" class="text-brand-600 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
 
-            <!-- Service 3 -->
+            <!-- Service 3: Familiar -->
             <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
                 <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-teal-600 group-hover:text-white transition">
                     <i class="fas fa-users text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Terapia Familiar</h3>
                 <p class="text-gray-500 mb-4 flex-grow">Fortalecer lazos y resolver conflictos desde un enfoque sistémico.</p>
-                <button onclick="openModal('Terapia Familiar', 'Intervención que involucra a varios miembros de la familia para mejorar la convivencia. Abordamos cambios de etapas de vida, duelos compartidos y problemas de conducta en el hogar.', 'fas fa-users')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('familiar')" class="text-brand-600 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
 
-            <!-- Service 4 -->
+            <!-- Service 4: Infantil -->
             <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
                 <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:text-white transition">
                     <i class="fas fa-child text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Infantil y Adolescente</h3>
                 <p class="text-gray-500 mb-4 flex-grow">Apoyo en problemas de conducta, bullying y desarrollo emocional.</p>
-                <button onclick="openModal('Infantil y Adolescente', 'Terapia adaptada a la edad mediante el juego y la palabra. Apoyamos a niños y jóvenes a expresar sus emociones, y brindamos orientación práctica a los padres.', 'fas fa-child')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('infantil')" class="text-brand-600 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
 
-            <!-- Service 5 -->
+            <!-- Service 5: Lenguaje -->
             <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
                 <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition">
                     <i class="fas fa-puzzle-piece text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Lenguaje y Aprendizaje</h3>
                 <p class="text-gray-500 mb-4 flex-grow">Corrección de pronunciación, dislexia y apoyo pedagógico especializado.</p>
-                <button onclick="openModal('Lenguaje y Aprendizaje', 'Evaluación e intervención en dificultades del habla, lectura, escritura y cálculo. Ayudamos a tu hijo a superar barreras académicas y comunicativas.', 'fas fa-puzzle-piece')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('lenguaje')" class="text-brand-600 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
 
-            <!-- Service 6 -->
+            <!-- Service 6: Evaluaciones -->
             <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
                 <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
                     <i class="fas fa-file-medical-alt text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3 text-gray-900">Evaluaciones Psicológicas</h3>
                 <p class="text-gray-500 mb-4 flex-grow">Pruebas psicométricas, de personalidad, coeficiente intelectual y vocacional.</p>
-                <button onclick="openModal('Evaluaciones Psicológicas', 'Aplicación profesional de baterías de pruebas estandarizadas (WISC, WAIS, Proyectivas). Entregamos reportes completos para escuelas o uso clínico.', 'fas fa-file-medical-alt')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                <button onclick="openModal('evaluaciones')" class="text-brand-600 font-bold hover:underline cursor-pointer">
+                    Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Service 7: Neuropediatría -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 group flex flex-col items-start">
+                <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                    <i class="fas fa-brain text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Neuropediatría</h3>
+                <p class="text-gray-500 mb-4 flex-grow">Consulta médica especializada para el diagnóstico del neurodesarrollo.</p>
+                <button onclick="openModal('neuropediatria')" class="text-brand-600 font-bold hover:underline cursor-pointer">
                     Saber más <i class="fas fa-arrow-right ml-1 text-sm"></i>
                 </button>
             </div>
@@ -317,7 +458,7 @@
                 <span class="text-brand-600 font-bold uppercase tracking-wide text-sm">Nuestro Capital Humano</span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Especialistas a tu servicio</h2>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-                    Contamos con un equipo de profesionales colegiados y altamente capacitados en diversas ramas de la psicología.
+                    Contamos con un equipo multidisciplinario de profesionales médicos y psicólogos altamente capacitados.
                 </p>
             </div>
 
@@ -330,6 +471,24 @@
                 <!-- Slider -->
                 <div id="team-slider" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory no-scrollbar scroll-smooth">
                     
+                    <!-- Team Card 1: Neuropediatra -->
+                    <div class="flex-none w-[85%] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white p-8 rounded-lg shadow-lg border-t-4 border-blue-600 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 snap-center">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-serif font-bold text-gray-900">Dr. Angel Bautista</h3>
+                                <span class="text-blue-600 font-bold text-xs uppercase tracking-wider block mt-1">Médico Neuropediatra</span>
+                            </div>
+                            <i class="fas fa-stethoscope text-blue-200 text-3xl"></i>
+                        </div>
+                        <hr class="border-gray-100 my-4">
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Especialista en el diagnóstico y tratamiento de trastornos del neurodesarrollo, TEA, TDAH y epilepsia infantil. Enfoque médico integral.
+                        </p>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i class="fas fa-user-md mr-2"></i> CMP 051876
+                        </div>
+                    </div>
+
                     <!-- Team Card 2: General -->
                     <div class="flex-none w-[85%] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-white p-8 rounded-lg shadow-lg border-t-4 border-emerald-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 snap-center">
                         <div class="flex items-start justify-between mb-4">
@@ -421,90 +580,84 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-brand-600 font-bold uppercase tracking-wide">Voces que Inspiran</span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Lo que dicen nuestros pacientes</h2>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2">Historias de Mamás</h2>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-                    Historias reales de superación y bienestar. Tu confianza es nuestra mayor motivación.
+                    Descubre cómo hemos ayudado a familias a recuperar su bienestar.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 relative">
-                    <div class="absolute -top-4 left-8 w-10 h-10 bg-brand-500 text-white rounded-full flex items-center justify-center text-xl shadow-md">
-                        <i class="fas fa-quote-left"></i>
+            <!-- Grid centrada para videos verticales -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                
+                <!-- Video Testimonio 1 -->
+                <div class="flex flex-col w-full max-w-[300px] shadow-2xl rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200 bg-white">
+                    <!-- Contenedor Video (Iframe Drive) -->
+                    <div class="drive-iframe-container bg-black">
+                        <iframe src="https://drive.google.com/file/d/1aD-G4VR4NcdyYi9kOzaiAs-4DeOiMwZd/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
-                    <div class="flex text-yellow-400 mb-4 text-sm">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 italic mb-6 leading-relaxed">
-                        "Llegué con mucha ansiedad y desde la primera sesión sentí un gran alivio. El trato es muy humano y profesional. Me han ayudado a ver las cosas desde otra perspectiva."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold mr-3">
-                            AM
+                    <!-- Info Tarjeta -->
+                    <div class="p-4 bg-white">
+                        <div class="flex text-yellow-400 text-xs mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Ana María P.</h4>
-                            <span class="text-xs text-gray-500">Paciente Terapia Individual</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 relative">
-                    <div class="absolute -top-4 left-8 w-10 h-10 bg-brand-500 text-white rounded-full flex items-center justify-center text-xl shadow-md">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <div class="flex text-yellow-400 mb-4 text-sm">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 italic mb-6 leading-relaxed">
-                        "El programa para niños ha sido maravilloso para mi hijo. Ha mejorado mucho su atención y sus habilidades sociales en el colegio. Estamos muy agradecidos."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold mr-3">
-                            CR
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Carlos R.</h4>
-                            <span class="text-xs text-gray-500">Padre de Familia</span>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold text-xs mr-2">
+                                A
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 leading-tight">Mamá de Paciente</h4>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wide">Familia FloreSer</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 relative">
-                    <div class="absolute -top-4 left-8 w-10 h-10 bg-brand-500 text-white rounded-full flex items-center justify-center text-xl shadow-md">
-                        <i class="fas fa-quote-left"></i>
+                <!-- Video Testimonio 2 -->
+                <div class="flex flex-col w-full max-w-[300px] shadow-2xl rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200 bg-white">
+                    <!-- Contenedor Video (Iframe Drive) -->
+                    <div class="drive-iframe-container bg-black">
+                         <iframe src="https://drive.google.com/file/d/1UtxQiw92ykp5XYeKDGYxifAY6TFGZ-TE/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
-                    <div class="flex text-yellow-400 mb-4 text-sm">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 italic mb-6 leading-relaxed">
-                        "Excelente ambiente y profesionales muy capacitados. Me ayudaron a superar una etapa difícil en mi relación. Altamente recomendados por su ética y compromiso."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-700 font-bold mr-3">
-                            LF
+                    <!-- Info Tarjeta -->
+                    <div class="p-4 bg-white">
+                        <div class="flex text-yellow-400 text-xs mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-gray-900">Lucía F.</h4>
-                            <span class="text-xs text-gray-500">Paciente Terapia de Pareja</span>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-xs mr-2">
+                                D
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 leading-tight">Mamá de Paciente</h4>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wide">Familia FloreSer</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Video Testimonio 3 -->
+                <div class="flex flex-col w-full max-w-[300px] shadow-2xl rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 border border-gray-200 bg-white">
+                    <!-- Contenedor Video (Iframe Drive) -->
+                    <div class="drive-iframe-container bg-black">
+                        <iframe src="https://drive.google.com/file/d/1MEqL58zmKanXo2KFnjG76tcgHGc0LHHi/preview" allow="autoplay" allowfullscreen></iframe>
+                    </div>
+                    <!-- Info Tarjeta -->
+                    <div class="p-4 bg-white">
+                        <div class="flex text-yellow-400 text-xs mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-xs mr-2">
+                                K
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 leading-tight">Mamá de Paciente</h4>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wide">Familia FloreSer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -512,26 +665,81 @@
     <!-- Contact Section -->
     <section id="contacto" class="py-20 bg-white section-spy">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Selector de Sede -->
+            <div class="text-center mb-12">
+                <span class="text-brand-600 font-bold uppercase tracking-wide">¿De dónde nos estás viendo?</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2 mb-6">Selecciona tu sede preferida</h2>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="cambiarSede('ilo')" id="btn-ilo" class="px-8 py-3 rounded-full font-bold transition duration-300 bg-brand-600 text-white shadow-lg transform hover:-translate-y-1 hover:bg-brand-700">
+                        Sede Ilo
+                    </button>
+                    <button onclick="cambiarSede('arequipa')" id="btn-arequipa" class="px-8 py-3 rounded-full font-bold transition duration-300 bg-white text-gray-600 border border-gray-300 hover:bg-gray-50 transform hover:-translate-y-1">
+                        Sede Arequipa
+                    </button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Contact Info -->
                 <div>
-                    <span class="text-brand-600 font-bold uppercase tracking-wide">Contáctanos</span>
                     <h2 class="text-4xl font-serif font-bold text-gray-900 mb-6">Estamos aquí para escucharte</h2>
                     <p class="text-gray-600 mb-8 text-lg">
-                        Da el primer paso hacia tu bienestar. Agenda tu cita o solicita informes llenando el formulario o a través de nuestros canales directos.
+                        Da el primer paso hacia tu bienestar. Agenda tu cita en nuestra sede de <span id="nombre-sede-texto" class="font-bold text-brand-600">Ilo</span> o solicita informes llenando el formulario.
                     </p>
 
-                    <div class="space-y-6">
+                    <!-- Info ILO (Visible por defecto) -->
+                    <div id="info-ilo" class="space-y-6 fade-in">
                         <div class="flex items-start">
                             <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-bold text-gray-900">Ubicación</h3>
+                                <h3 class="text-lg font-bold text-gray-900">Sede Ilo</h3>
                                 <p class="text-gray-600">SIGLO XXI MZ B, LT 31<br>Referencia: (Al frente de MiBanco)</p>
                             </div>
                         </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">WhatsApp / Teléfono (Ilo)</h3>
+                                <p class="text-gray-600">989 783 434</p>
+                                <p class="text-brand-600 text-sm font-medium mt-1"><a href="https://wa.me/51989783434" target="_blank" class="hover:underline">Enviar mensaje directo &rarr;</a></p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Info AREQUIPA (Oculto por defecto) -->
+                    <div id="info-arequipa" class="space-y-6 hidden fade-in">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fas fa-map-pin"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">Sede Arequipa</h3>
+                                <p class="text-gray-600">Av. Ejército 123, Cayma<br><span class="italic text-sm">(Referencia: Cerca al Mall Plaza)</span></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-gray-900">WhatsApp / Teléfono (Arequipa)</h3>
+                                <!-- NUMERO DE AREQUIPA -->
+                                <p class="text-gray-600">9XX XXX XXX</p>
+                                <p class="text-brand-600 text-sm font-medium mt-1"><a href="#" id="link-wsp-arequipa" target="_blank" class="hover:underline">Enviar mensaje directo &rarr;</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info Común -->
+                    <div class="space-y-6 mt-6 border-t border-gray-100 pt-6">
                         <div class="flex items-start">
                             <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
                                 <i class="fas fa-clock"></i>
@@ -545,17 +753,6 @@
 
                         <div class="flex items-start">
                             <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-bold text-gray-900">WhatsApp / Teléfono</h3>
-                                <p class="text-gray-600">989 783 434</p>
-                                <p class="text-brand-600 text-sm font-medium mt-1"><a href="https://wa.me/51989783434" target="_blank" class="hover:underline">Enviar mensaje directo &rarr;</a></p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 text-xl">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="ml-4">
@@ -564,6 +761,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Form -->
@@ -589,10 +787,21 @@
                                 <option>Terapia Familiar</option>
                                 <option>Terapia de Lenguaje / Aprendizaje</option>
                                 <option>Evaluación Psicológica / CI</option>
+                                <option>Neuropediatría</option>
                                 <option>Orientación Vocacional</option>
                                 <option>Otro</option>
                             </select>
                         </div>
+                        
+                        <!-- Selección de Sede (Se actualiza con los botones) -->
+                        <div>
+                            <label for="sede" class="block text-sm font-medium text-gray-700 mb-1">Sede de Preferencia</label>
+                            <select id="sede" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition bg-white">
+                                <option value="Ilo">Sede Ilo</option>
+                                <option value="Arequipa">Sede Arequipa</option>
+                            </select>
+                        </div>
+
                         <div>
                             <label for="mensaje" class="block text-sm font-medium text-gray-700 mb-1">Mensaje (Opcional)</label>
                             <textarea id="mensaje" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition" placeholder="Hola, quisiera agendar una cita para..."></textarea>
@@ -605,22 +814,41 @@
                 </div>
             </div>
             
-            <!-- Map Section -->
-            <div class="mt-16 rounded-xl overflow-hidden shadow-lg border border-gray-100 h-96 w-full relative">
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    src="https://maps.google.com/maps?q=-17.652996, -71.327254&t=&z=18&ie=UTF8&iwloc=&output=embed"
-                    title="Ubicación Centro Psicológico FloreSer"
-                    class="absolute inset-0"
-                    loading="lazy">
-                </iframe>
-            </div>
+            <!-- Map Section (Dynamic) -->
+            <div class="mt-16 relative h-96 rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                
+                <!-- Mapa Ilo -->
+                <div id="map-ilo" class="absolute inset-0 w-full h-full fade-in">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?q=-17.652996, -71.327254&t=&z=18&ie=UTF8&iwloc=&output=embed"
+                        title="Ubicación Centro Psicológico FloreSer Ilo"
+                        class="absolute inset-0"
+                        loading="lazy">
+                    </iframe>
+                </div>
 
+                <!-- Mapa Arequipa -->
+                <div id="map-arequipa" class="absolute inset-0 w-full h-full hidden fade-in">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?q=Arequipa, Peru&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        title="Ubicación Centro Psicológico FloreSer Arequipa"
+                        class="absolute inset-0"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -635,7 +863,7 @@
                         <span class="text-xl font-serif font-bold">FloreSer</span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Comprometidos con tu salud mental y bienestar emocional. Tu tranquilidad es nuestra prioridad.
+                        Comprometidos con tu salud mental y bienestar emocional en nuestras sedes de Ilo y Arequipa. Tu tranquilidad es nuestra prioridad.
                     </p>
                 </div>
                 <div>
@@ -673,40 +901,73 @@
         </div>
     </footer>
 
-    <!-- INFO MODAL -->
-    <div id="serviceModal" class="fixed inset-0 z-[60] hidden overflow-y-auto modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeServiceModal()"></div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
-                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-brand-100 sm:mx-0 sm:h-12 sm:w-12 text-brand-600 text-xl" id="modalIconContainer">
-                            <i id="modalIcon" class="fas fa-info"></i>
+    <!-- PROFESSIONAL MODAL (Rediseñado) -->
+    <div id="serviceModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div id="modalBackdrop" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity" onclick="closeServiceModal()"></div>
+        
+        <!-- Modal Card Container -->
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div id="modalCard" class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-2xl border border-white/20">
+                
+                <!-- Close Button (Floating) -->
+                <button onclick="closeServiceModal()" class="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all duration-300 hover:rotate-90 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <!-- Header Image & Title -->
+                <div class="relative h-64 overflow-hidden group">
+                    <img id="modalImage" src="" alt="Servicio" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full animate-item delay-100">
+                        <span class="inline-block px-3 py-1 mb-3 text-xs font-bold tracking-wider text-white uppercase bg-brand-500/80 backdrop-blur-md rounded-full">Servicio Profesional</span>
+                        <h3 class="text-3xl font-serif font-bold text-white drop-shadow-md leading-tight" id="modalTitle">Título del Servicio</h3>
+                    </div>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="px-8 py-8 bg-white">
+                    <!-- Hook -->
+                    <div class="mb-8 animate-item delay-200">
+                        <p class="text-xl font-medium text-brand-800 leading-relaxed border-l-4 border-brand-500 pl-4 italic" id="modalHook">
+                            "Pregunta impactante aquí"
+                        </p>
+                    </div>
+
+                    <!-- Layout: Benefits + FAQ -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 animate-item delay-300">
+                        <!-- Benefits -->
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Lo que lograrás</h4>
+                            <ul class="space-y-3 modal-content text-gray-600" id="modalBenefits">
+                                <!-- Dynamic List -->
+                            </ul>
                         </div>
-                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                            <h3 class="text-2xl leading-6 font-bold text-gray-900 mb-2" id="modalTitle">Título del Servicio</h3>
-                            <div class="mt-2">
-                                <p class="text-md text-gray-600" id="modalDescription">
-                                    Descripción detallada del servicio...
-                                </p>
+
+                        <!-- FAQ -->
+                        <div class="bg-gray-50 p-5 rounded-xl">
+                            <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Preguntas Frecuentes</h4>
+                            <div class="space-y-4" id="modalFaq">
+                                <!-- Dynamic FAQ -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-4 sm:px-6 sm:flex sm:flex-row-reverse gap-2">
-                    <button type="button" onclick="goToContact()" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-brand-600 text-base font-bold text-white hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 sm:ml-3 sm:w-auto sm:text-sm transition">
-                        Agendar Cita
+
+                <!-- Footer CTA -->
+                <div class="bg-gray-50 px-8 py-6 flex flex-col sm:flex-row sm:justify-between items-center gap-4 border-t border-gray-100 animate-item delay-300">
+                    <button type="button" onclick="closeServiceModal()" class="text-sm font-semibold text-gray-500 hover:text-gray-800 transition">
+                        Cancelar
                     </button>
-                    <button type="button" onclick="closeServiceModal()" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm transition">
-                        Cerrar
+                    <button type="button" onclick="goToContact()" id="modalCtaBtn" class="w-full sm:w-auto inline-flex justify-center items-center rounded-xl px-8 py-3.5 bg-brand-600 text-base font-bold text-white shadow-lg hover:bg-brand-700 hover:shadow-brand-200/50 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500">
+                        Agendar Cita Ahora <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Custom Modal for Success Message (kept for potential use) -->
+    <!-- Success Modal (Simple) -->
     <div id="successModal" class="fixed inset-0 z-[70] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
@@ -736,6 +997,481 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- LÓGICA DE SEDES ---
+        const sedesData = {
+            ilo: {
+                whatsapp: "51989783434"
+            },
+            arequipa: {
+                // !!! AQUI CAMBIAR POR EL NUMERO REAL DE AREQUIPA !!!
+                whatsapp: "51900000000" 
+            }
+        };
+
+        let sedeActual = 'ilo'; // Por defecto
+
+        function cambiarSede(sede) {
+            sedeActual = sede;
+            const btnIlo = document.getElementById('btn-ilo');
+            const btnArequipa = document.getElementById('btn-arequipa');
+            const infoIlo = document.getElementById('info-ilo');
+            const infoArequipa = document.getElementById('info-arequipa');
+            const mapIlo = document.getElementById('map-ilo');
+            const mapArequipa = document.getElementById('map-arequipa');
+            const selectSede = document.getElementById('sede');
+            const nombreSedeTexto = document.getElementById('nombre-sede-texto');
+
+            // Definir clases de estados para asegurar limpieza
+            const activeClasses = ['bg-brand-600', 'text-white', 'shadow-lg', 'hover:bg-brand-700'];
+            const inactiveClasses = ['bg-white', 'text-gray-600', 'border', 'border-gray-300', 'hover:bg-gray-50'];
+
+            if (sede === 'ilo') {
+                // Configurar ILO como Activo
+                btnIlo.classList.remove(...inactiveClasses);
+                btnIlo.classList.add(...activeClasses);
+                
+                // Configurar AREQUIPA como Inactivo
+                btnArequipa.classList.remove(...activeClasses);
+                btnArequipa.classList.add(...inactiveClasses);
+
+                // Mostrar Info
+                infoIlo.classList.remove('hidden');
+                infoArequipa.classList.add('hidden');
+
+                // Mostrar Mapa
+                mapIlo.classList.remove('hidden');
+                mapArequipa.classList.add('hidden');
+
+                // Actualizar Select y Texto
+                selectSede.value = 'Ilo';
+                nombreSedeTexto.textContent = 'Ilo';
+
+            } else {
+                // Configurar AREQUIPA como Activo
+                btnArequipa.classList.remove(...inactiveClasses);
+                btnArequipa.classList.add(...activeClasses);
+                
+                // Configurar ILO como Inactivo
+                btnIlo.classList.remove(...activeClasses);
+                btnIlo.classList.add(...inactiveClasses);
+
+                // Mostrar Info
+                infoArequipa.classList.remove('hidden');
+                infoIlo.classList.add('hidden');
+
+                // Mostrar Mapa
+                mapArequipa.classList.remove('hidden');
+                mapIlo.classList.add('hidden');
+
+                // Actualizar Select y Texto
+                selectSede.value = 'Arequipa';
+                nombreSedeTexto.textContent = 'Arequipa';
+            }
+            
+            // Actualizar Link WhatsApp Dinámico de Arequipa (si fuera necesario inyectarlo en JS)
+             if(sede === 'arequipa'){
+                 const linkWsp = document.getElementById('link-wsp-arequipa');
+                 if(linkWsp) linkWsp.href = `https://wa.me/${sedesData.arequipa.whatsapp}`;
+             }
+        }
+        
+        // Listener para cambio manual en el select
+        document.getElementById('sede').addEventListener('change', function(e) {
+            cambiarSede(e.target.value.toLowerCase());
+        });
+
+        // --- FIN LÓGICA DE SEDES ---
+
+
+        // Lógica mejorada del carrusel de equipo
+        function scrollTeam(direction) {
+            const container = document.getElementById('team-slider');
+            const card = container.querySelector('div');
+            
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const gap = 24; // gap-6 es 1.5rem = 24px
+                const scrollAmount = cardWidth + gap;
+                
+                if (direction === 'left') {
+                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const servicio = document.getElementById('servicio').value;
+            const sede = document.getElementById('sede').value; 
+            const mensaje = document.getElementById('mensaje').value;
+            const telefonoCliente = document.getElementById('telefono').value;
+            
+            // Seleccionar numero destino segun sede
+            let numeroDestino = sedesData.ilo.whatsapp;
+            if (sede === 'Arequipa') {
+                numeroDestino = sedesData.arequipa.whatsapp;
+            }
+
+            let texto = `Hola, mi nombre es *${nombre}*.\n`;
+            texto += `Estoy interesado en: *${servicio}* en la *Sede ${sede}*.\n`; 
+            if (telefonoCliente) texto += `Mi número de contacto es: ${telefonoCliente}\n`;
+            if (mensaje) texto += `Mensaje adicional: ${mensaje}`;
+
+            const url = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // --- SISTEMA DE MODALES CONVERTIDORES ---
+        const serviceData = {
+            psicoeducativo: {
+                title: "Programa Psicoeducativo Anual",
+                image: "img/programapsieducativo.jpg", // Usar imagen real si tienes, si no una genérica
+                hook: "¿Te preocupa que tu hijo no esté recibiendo el apoyo adecuado para desarrollar su máximo potencial?",
+                benefits: [
+                    "Desarrollo de habilidades sociales y autonomía.",
+                    "Mejora en funciones ejecutivas y adaptación escolar.",
+                    "Entorno terapéutico estructurado y especializado.",
+                    "Apoyo continuo para neurodivergencias (TEA, TDAH)."
+                ],
+                faqs: [
+                    { q: "¿Para qué edades es?", a: "Diseñado principalmente para niños y adolescentes en edad escolar." },
+                    { q: "¿Es individual o grupal?", a: "Combinamos sesiones personalizadas con talleres de habilidades sociales." }
+                ],
+                cta: "Solicitar Evaluación de Ingreso"
+            },
+            individual: {
+                title: "Terapia Individual Adultos",
+                image: "img/terapiaindividual.jpg",
+                hook: "¿Sientes que la ansiedad, el estrés o la tristeza están tomando el control de tu vida?",
+                benefits: [
+                    "Recupera tu paz mental y estabilidad emocional.",
+                    "Herramientas prácticas para manejar la ansiedad.",
+                    "Espacio seguro y 100% confidencial.",
+                    "Fortalecimiento de tu autoestima y autoconocimiento."
+                ],
+                faqs: [
+                    { q: "¿Cuánto dura cada sesión?", a: "Las sesiones duran aproximadamente 50 minutos." },
+                    { q: "¿Aceptan seguros?", a: "Emitimos boleta para que puedas gestionar tu reembolso si aplica." }
+                ],
+                cta: "Agendar mi Primera Sesión"
+            },
+            pareja: {
+                title: "Terapia de Pareja",
+                image: "img/terapiapareja.webp",
+                hook: "¿Las discusiones constantes están desgastando el amor que se tienen? ¿Sienten que ya no se entienden?",
+                benefits: [
+                    "Mejorar la comunicación y romper ciclos de conflicto.",
+                    "Recuperar la confianza y la intimidad emocional.",
+                    "Herramientas para resolver problemas sin herirse.",
+                    "Construir un proyecto de vida juntos nuevamente."
+                ],
+                faqs: [
+                    { q: "¿Debemos ir los dos?", a: "Sí, es ideal que ambos participen para ver resultados." },
+                    { q: "¿Qué pasa si mi pareja no quiere ir?", a: "Puedes iniciar con una sesión de orientación individual." }
+                ],
+                cta: "Salvar mi Relación"
+            },
+            familiar: {
+                title: "Terapia Familiar",
+                image: "img/terapiafamiliar.jpg",
+                hook: "¿El ambiente en casa es tenso? ¿Hay conflictos entre padres e hijos que parecen no tener solución?",
+                benefits: [
+                    "Restaurar la armonía y la convivencia en el hogar.",
+                    "Entender las necesidades de cada miembro de la familia.",
+                    "Apoyo en procesos de duelo o cambios importantes.",
+                    "Fortalecer los vínculos afectivos."
+                ],
+                faqs: [
+                    { q: "¿Pueden ir niños?", a: "Sí, adaptamos la sesión para que todos puedan participar." }
+                ],
+                cta: "Mejorar la Convivencia"
+            },
+            infantil: {
+                title: "Psicología Infantil y Adolescente",
+                image: "img/terapiainfantil.jpg",
+                hook: "¿Notas cambios drásticos en la conducta de tu hijo? ¿Problemas en el colegio, rebeldía o aislamiento?",
+                benefits: [
+                    "Gestión emocional adecuada para su edad.",
+                    "Mejora en la conducta y rendimiento escolar.",
+                    "Orientación práctica y constante para los padres.",
+                    "Prevención de problemas a futuro (bullying, autoestima)."
+                ],
+                faqs: [
+                    { q: "¿Los padres entran a consulta?", a: "La primera sesión es solo con padres, luego se trabaja con el menor." }
+                ],
+                cta: "Ayudar a mi Hijo"
+            },
+            lenguaje: {
+                title: "Terapia de Lenguaje y Aprendizaje",
+                image: "img/terapialenguaje.avif",
+                hook: "¿A tu hijo le cuesta pronunciar palabras, leer o va atrasado en comparación con sus compañeros?",
+                benefits: [
+                    "Corrección de problemas de pronunciación y habla.",
+                    "Estrategias personalizadas para dislexia o discalculia.",
+                    "Mejora significativa en el rendimiento académico.",
+                    "Aumento de la seguridad al comunicarse."
+                ],
+                faqs: [
+                    { q: "¿Desde qué edad atienden?", a: "Desde los 2 años en estimulación temprana del lenguaje." }
+                ],
+                cta: "Solicitar Evaluación"
+            },
+            evaluaciones: {
+                title: "Evaluaciones Psicológicas",
+                image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                hook: "¿Necesitas un informe psicológico para el colegio, trabajo o para conocer tu perfil vocacional?",
+                benefits: [
+                    "Pruebas estandarizadas y reconocidas.",
+                    "Informe detallado con resultados claros.",
+                    "Evaluación de Coeficiente Intelectual (CI).",
+                    "Orientación vocacional para adolescentes."
+                ],
+                faqs: [
+                    { q: "¿En cuánto tiempo entregan el informe?", a: "Generalmente 3 a 5 días hábiles después de las pruebas." }
+                ],
+                cta: "Agendar Evaluación"
+            },
+            neuropediatria: {
+                title: "Neuropediatría",
+                image: "img/neuropediatra.webp",
+                hook: "¿Buscas un diagnóstico médico certero sobre el neurodesarrollo de tu hijo?",
+                benefits: [
+                    "Diagnóstico clínico especializado (TEA, TDAH, Epilepsia).",
+                    "Tratamiento médico basado en evidencia.",
+                    "Seguimiento integral del desarrollo neurológico.",
+                    "Trabajo coordinado con el área de psicología."
+                ],
+                faqs: [
+                    { q: "¿Es necesario derivación?", a: "No, puedes agendar directamente si tienes sospechas." },
+                    { q: "¿Atienden emergencias?", a: "Somos consultorio ambulatorio, emergencias deben ir a hospital." }
+                ],
+                cta: "Agendar Cita Médica"
+            }
+        };
+
+        function openModal(serviceKey) {
+            const data = serviceData[serviceKey];
+            if (!data) return;
+
+            const modal = document.getElementById('serviceModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const card = document.getElementById('modalCard');
+            
+            // Llenar datos
+            document.getElementById('modalTitle').textContent = data.title;
+            const imgEl = document.getElementById('modalImage');
+            imgEl.src = data.image;
+            imgEl.onerror = function() { this.src = 'https://via.placeholder.com/800x400?text=FloreSer'; };
+            
+            document.getElementById('modalHook').textContent = data.hook;
+            
+            // Llenar Beneficios
+            const benefitsList = document.getElementById('modalBenefits');
+            benefitsList.innerHTML = '';
+            data.benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.textContent = benefit;
+                benefitsList.appendChild(li);
+            });
+
+            // Llenar FAQ
+            const faqContainer = document.getElementById('modalFaq');
+            faqContainer.innerHTML = '';
+            data.faqs.forEach(faq => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p class="font-bold text-xs text-brand-700 uppercase mb-1">${faq.q}</p><p class="text-sm text-gray-600 leading-relaxed">${faq.a}</p>`;
+                faqContainer.appendChild(div);
+            });
+
+            // Botón CTA
+            const ctaBtn = document.getElementById('modalCtaBtn');
+            ctaBtn.innerHTML = `${data.cta} <i class="fas fa-arrow-right ml-2"></i>`;
+
+            // ANIMACIONES DE ENTRADA
+            modal.classList.remove('hidden');
+            
+            // --- CORRECCIÓN IMPORTANTE: RESETEAR SCROLL ---
+            modal.scrollTop = 0;
+            
+            // Eliminar clases de salida si existen
+            backdrop.classList.remove('modal-backdrop-leave');
+            card.classList.remove('modal-card-leave');
+            
+            // Añadir clases de entrada
+            backdrop.classList.add('modal-backdrop-enter');
+            card.classList.add('modal-card-enter');
+            
+            // Resetear animación de items (usando cadena vacía para reset limpio)
+            const animatedItems = document.querySelectorAll('.animate-item');
+            animatedItems.forEach(item => {
+                item.style.animation = 'none';
+                item.offsetHeight; /* trigger reflow */
+                item.style.animation = ''; 
+            });
+        }
+
+        function closeServiceModal() {
+            const modal = document.getElementById('serviceModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const card = document.getElementById('modalCard');
+            
+            // Quitar clases de entrada
+            backdrop.classList.remove('modal-backdrop-enter');
+            card.classList.remove('modal-card-enter');
+            
+            // Añadir clases de salida
+            backdrop.classList.add('modal-backdrop-leave');
+            card.classList.add('modal-card-leave');
+
+            // Esperar a que termine la animación para ocultar
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Mismo tiempo que la duración CSS (0.3s)
+        }
+
+        function goToContact() {
+            closeServiceModal();
+            const contactSection = document.getElementById('contacto');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        const heroSlides = [
+            {
+                img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+                subtitle: "Salud Mental & Bienestar",
+                title: "Recupera tu equilibrio, <br><span class='text-brand-600'>reencuéntrate contigo.</span>",
+                desc: "Un espacio seguro diseñado para tu crecimiento personal y sanación emocional. Terapia profesional adaptada a tus necesidades."
+            },
+            {
+                img: "img/image11.png",
+                subtitle: "Terapia Infantil",
+                title: "Ayudándolos a crecer <br><span class='text-brand-600'>felices y seguros.</span>",
+                desc: "Apoyo especializado para el manejo de emociones, conducta y desarrollo en niños y adolescentes."
+            },
+            {
+                img: "img/image12.png",
+                subtitle: "Terapia de Pareja",
+                title: "Construyan juntos <br><span class='text-brand-600'>una relación sólida.</span>",
+                desc: "Mejoren la comunicación y fortalezcan el vínculo afectivo con acompañamiento profesional."
+            }
+        ];
+
+        let currentHeroSlide = 0;
+        const bgElement = document.getElementById('hero-bg');
+        const contentElement = document.getElementById('hero-content');
+        const elSubtitle = document.getElementById('hero-subtitle');
+        const elTitle = document.getElementById('hero-title');
+        const elDesc = document.getElementById('hero-desc');
+
+        function setSlide(index) {
+            currentHeroSlide = index;
+            updateCarousel();
+        }
+
+        function nextHeroSlide() {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slide = heroSlides[currentHeroSlide];
+            contentElement.style.opacity = '0';
+            contentElement.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                bgElement.style.backgroundImage = `url('${slide.img}')`;
+                elSubtitle.textContent = slide.subtitle;
+                elTitle.innerHTML = slide.title;
+                elDesc.textContent = slide.desc;
+
+                document.querySelectorAll('[id^="dot-"]').forEach((dot, idx) => {
+                    if(idx === currentHeroSlide) {
+                        dot.classList.remove('bg-gray-300');
+                        dot.classList.add('bg-brand-600');
+                    } else {
+                        dot.classList.remove('bg-brand-600');
+                        dot.classList.add('bg-gray-300');
+                    }
+                });
+
+                contentElement.style.opacity = '1';
+                contentElement.style.transform = 'translateY(0)';
+            }, 500);
+        }
+
+        setInterval(nextHeroSlide, 5000);
+
+        window.onclick = function(event) {
+            const successModal = document.getElementById('successModal');
+            if (event.target == successModal.querySelector('.bg-opacity-75')) {
+                closeModal();
+            }
+        }
+
+        // --- SCROLL SPY LOGIC ---
+        function initScrollSpy() {
+
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const mobileLinks = document.querySelectorAll(".mobile-link");
+
+            window.addEventListener('scroll', () => {
+                let current = "";
+                const scrollPosition = window.scrollY + 150; // Offset for navbar height
+
+                sections.forEach((section) => {
+                    // Check if scroll is within section
+                    if (section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                // Desktop Links
+                navLinks.forEach((link) => {
+                    link.classList.remove("active"); 
+                    link.classList.remove("border-[#702F8A]", "text-[#702F8A]"); // Remove specific color classes
+                    link.classList.add("border-transparent", "text-gray-600");   // Reset to default
+
+                    if (link.getAttribute("href").includes(current) && current !== "") {
+                        link.classList.add("active");
+                        // Apply specific highlight styles via Tailwind/CSS
+                        link.classList.remove("border-transparent", "text-gray-600");
+                        link.classList.add("border-[#702F8A]", "text-[#702F8A]");
+                    }
+                });
+                
+                 // Mobile Links (Color text only)
+                 mobileLinks.forEach((link) => {
+                     link.classList.remove("text-[#702F8A]", "bg-brand-50");
+                     link.classList.add("text-gray-700");
+                     
+                     if (link.getAttribute("href").includes(current) && current !== "") {
+                         link.classList.remove("text-gray-700");
+                         link.classList.add("text-[#702F8A]", "bg-brand-50");
+                     }
+                 });
+            });
+            
+            // Inicializar link wsp arequipa
+            cambiarSede('ilo');
+        }
+    </script>
 </body>
 </html>
